@@ -1,0 +1,38 @@
+<div class="form-container">
+    <h2>Welcome to ABC Cafe!</h2>
+  
+    <div *ngIf="!orderPlaced">
+      <input [(ngModel)]="customerName" class="name-input" placeholder="Enter your name" />
+      <button class="order-btn" (click)="askOrder()">Ask Order</button>
+    </div>
+  </div>
+  
+  <div *ngIf="orderInquiryActive && !orderPlaced" class="order-inquiry">
+    <h3>What would {{ customerName }} like to have?</h3>
+  
+    
+    <div class="beverages-list">
+      <div *ngFor="let beverage of beverages" class="beverage-item">
+        <label>
+          <input type="checkbox" (change)="toggleSelection(beverage, $event)" class="beverage-checkbox" />
+          <span class="beverage-name">{{ beverage.name }} - ${{ beverage.price }}</span>
+        </label>
+      </div>
+    </div>
+
+    <button class="order-btn" (click)="placeOrder()">Place Order</button>
+  </div>
+  
+ 
+  <div *ngIf="orderPlaced" class="order-summary">
+    <h3>Order Summary</h3>
+    <ul class="summary-list">
+      <li *ngFor="let order of orderSummary; let i = index" class="summary-item">
+        {{ i + 1 }}. {{ order.customerName }} ordered {{ order.beverage }} for ${{ order.price }}
+      </li>
+    </ul>
+    <p class="total-price"><strong>Total Price: ${{ totalPrice }}</strong></p>
+
+    <button class="reset-btn" (click)="resetOrder()">Reset Order</button>
+  </div>
+  

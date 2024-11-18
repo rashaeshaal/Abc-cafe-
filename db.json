@@ -1,0 +1,10 @@
+{
+    "products": [
+      { "id": 1, "name": "Coffee", "price": 2.5 },
+      { "id": 2, "name": "Tea", "price": 1.8 },
+      { "id": 3, "name": "Juice", "price": 3.0 },
+      { "id": 4, "name": "Soda", "price": 1.2 }
+    ],
+    "orders": []
+  }
+  
